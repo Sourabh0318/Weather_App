@@ -12,13 +12,16 @@ city_name = input("Enter city name: ")
 Final_url = url + "appid=" + api_key + "&q=" + city_name
 
 # store the json response in a variable
-response = requests.get(Final_url).json()
+try:
+    response = requests.get(Final_url).json()
 
-# fetched temperature from json file
-temperature = response['main']['temp']
-min_temperature = response['main']['temp_min']
-max_temperature = response['main']['temp_max']
+    # fetched temperature from json file
+    temperature = response['main']['temp']
+    min_temperature = response['main']['temp_min']
+    max_temperature = response['main']['temp_max']
 
-# Printed the temperature
-print(f"The Temperature of {city_name} is {temperature}°C")
-print(f"Maximum_Temperature: {max_temperature}\nMinimum_Temperature: {min_temperature}")
+    # Printed the temperature
+    print(f"The Temperature of {city_name} is {temperature}°C")
+    print(f"Maximum_Temperature: {max_temperature}\nMinimum_Temperature: {min_temperature}")
+except ValueError:
+    print("Invalid city name")
