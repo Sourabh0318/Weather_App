@@ -11,7 +11,7 @@ city_name = input("Enter city name: ")
 # Created final url with addition of api_key and city_name
 Final_url = url + "appid=" + api_key + "&q=" + city_name
 
-# added exception-handling 
+# added exception-handling
 try:
     # store the json response in a variable
     response = requests.get(Final_url).json()
@@ -23,6 +23,8 @@ try:
 
     # Printed the temperature
     print(f"The Temperature of {city_name} is {temperature}°C")
-    print(f"Maximum_Temperature: {max_temperature}\nMinimum_Temperature: {min_temperature}")
+    print(f"Maximum_Temperature: {max_temperature}°C\nMinimum_Temperature: {min_temperature}°C")
 except ValueError:
     print("Invalid city name")
+except KeyError:
+    print("Invalid Key")
