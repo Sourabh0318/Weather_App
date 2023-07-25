@@ -11,8 +11,9 @@ city_name = input("Enter city name: ")
 # Created final url with addition of api_key and city_name
 Final_url = url + "appid=" + api_key + "&q=" + city_name
 
-# store the json response in a variable
+# added exception-handling 
 try:
+    # store the json response in a variable
     response = requests.get(Final_url).json()
 
     # fetched temperature from json file
